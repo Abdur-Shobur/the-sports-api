@@ -33,7 +33,7 @@ const showDetails = (data) => {
     .then((data) => displayTeams(data.teams))
 
   const showCountry = document.querySelector('.showCountry')
-  showCountry.style.opacity = '0.9'
+  showCountry.style.opacity = '0.7'
 }
 
 // display teams
@@ -83,6 +83,6 @@ const loadCounty = () => {
     .then((data) => displayTeams(data.teams))
 
   const showCountry = document.querySelector('.showCountry')
-  showCountry.style.opacity = '0.9'
+  showCountry.style.opacity = '0.7'
   country.value = ''
 }
