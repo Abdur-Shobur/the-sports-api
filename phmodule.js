@@ -73,26 +73,16 @@ const toggleList = () => {
 }
 
 const loadCounty = () => {
-  const countryFild = document.querySelector('.country-fild').value
+  const country = document.querySelector('.country-fild')
+  const countryFild = country.value
 
-  const url = `https://www.thesportsdb.com/api/v1/json/2/all_countries.php
-`
+  showTem.style.display = 'block'
+  const url = `https://www.thesportsdb.com/api/v1/json/2/search_all_teams.php?s=Soccer&c=${countryFild}`
   fetch(url)
     .then((res) => res.json())
-    .then((data) => showCountrys(data.countries))
-  const showCountrys = (data) => {
-    data.forEach((ele) => {
-      if (ele.name_en == countryFild) {
-        const showCountry = document.querySelector('.showCountry')
+    .then((data) => displayTeams(data.teams))
 
-        const div = document.createElement('div')
-        div.innerHTML = `
-    <h5 onClick='showDetails("${countryFild}")'>${countryFild}</h5>
-    `
-        showCountry.appendChild(div)
-      } else {
-        return false
-      }
-    })
-  }
+  const showCountry = document.querySelector('.showCountry')
+  showCountry.style.opacity = '0.9'
+  country.value = ''
 }
